@@ -1,11 +1,11 @@
 [package]
 authors = ["Joseph T Lyons <JosephTLyons@gmail.com>"]
-description = "STUFF"
+description = "Calculate tempos by simply tapping"
 edition = "2021"
 license = "GPL-3.0-only"
 name = "tap_tempo"
 repository = "https://github.com/JosephTLyons/tap_tempo"
-version = "0.2.0"
+version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
