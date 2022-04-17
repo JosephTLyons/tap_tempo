@@ -71,6 +71,19 @@ mod tests {
         assert!(tempo.is_some());
     }
 
+    // Largely the same as above (redundant), but a bit stripped down for the README.md
+    #[test]
+    fn test_readme_example() {
+        let mut tap_tempo = TapTempo::new();
+        let tempo = tap_tempo.tap();
+        assert!(tempo.is_none());
+
+        // After some time has passed ...
+
+        let tempo = tap_tempo.tap();
+        assert!(tempo.is_some());
+    }
+
     #[test]
     fn test_get_tempo_tap_count_zero() {
         let (start_datetime, end_datetime) = get_start_and_end_test_datetimes();
