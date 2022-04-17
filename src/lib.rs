@@ -1,4 +1,5 @@
 use chrono::{offset::Utc, DateTime};
+
 pub struct TapTempo {
     start_datetime: Option<DateTime<Utc>>,
     tap_count: u128,
