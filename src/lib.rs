@@ -86,6 +86,8 @@ mod tests {
         assert!(tempo.is_some());
     }
 
+    // Kind of a bad test name, not sure if it should be written as it is or
+    // `test_start_datetime_lte_end_datetime`
     #[test]
     fn test_end_datetime_less_than_start_datetime() {
         let (start_datetime, end_datetime) = get_start_and_end_test_datetimes();
