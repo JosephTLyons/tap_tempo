@@ -26,6 +26,15 @@ impl TapTempo {
         None
     }
 
+    pub fn tap_count(&self) -> u128 {
+        self.tap_count
+    }
+
+    pub fn reset(&mut self) {
+        self.start_datetime = None;
+        self.tap_count = 0;
+    }
+
     fn tempo(
         tap_count: u128,
         start_datetime: &DateTime<Utc>,
@@ -84,6 +93,24 @@ mod tests {
 
         let tempo = tap_tempo.tap();
         assert!(tempo.is_some());
+    }
+
+    #[test]
+    fn test_tap_count_and_reset() {
+        let mut tap_tempo = TapTempo::new();
+
+        assert_eq!(tap_tempo.start_datetime, None);
+        assert_eq!(tap_tempo.tap_count, 0);
+
+        tap_tempo.tap();
+
+        assert!(tap_tempo.start_datetime.is_some());
+        assert_eq!(tap_tempo.tap_count, 1);
+
+        tap_tempo.reset();
+
+        assert_eq!(tap_tempo.start_datetime, None);
+        assert_eq!(tap_tempo.tap_count, 0);
     }
 
     // Kind of a bad test name, not sure if it should be written as it is or
