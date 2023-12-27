@@ -117,7 +117,7 @@ mod tests {
     }
 
     fn get_start_and_end_test_datetimes() -> (DateTime<Utc>, DateTime<Utc>) {
-        let start_datetime = Utc.ymd(1990, 4, 12).and_hms_milli(0, 0, 0, 0);
+        let start_datetime = Utc.with_ymd_and_hms(1990, 4, 12, 0, 0, 0).unwrap();
         let end_datetime = start_datetime + Duration::seconds(1);
         (start_datetime, end_datetime)
     }
