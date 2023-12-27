@@ -18,7 +18,7 @@ impl TapTempo {
         self.tap_count += 1;
 
         if let Some(start_datetime) = self.start_datetime {
-            return TapTempo::get_tempo(self.tap_count, &start_datetime, &Utc::now());
+            return TapTempo::tempo(self.tap_count, &start_datetime, &Utc::now());
         }
 
         self.start_datetime = Some(Utc::now());
@@ -26,7 +26,7 @@ impl TapTempo {
         None
     }
 
-    fn get_tempo(
+    fn tempo(
         tap_count: u128,
         start_datetime: &DateTime<Utc>,
         end_datetime: &DateTime<Utc>,
@@ -91,28 +91,28 @@ mod tests {
     #[test]
     fn test_end_datetime_less_than_start_datetime() {
         let (start_datetime, end_datetime) = get_start_and_end_test_datetimes();
-        let tempo = TapTempo::get_tempo(2, &end_datetime, &start_datetime);
+        let tempo = TapTempo::tempo(2, &end_datetime, &start_datetime);
         assert_eq!(tempo, None)
     }
 
     #[test]
     fn test_get_tempo_tap_count_zero() {
         let (start_datetime, end_datetime) = get_start_and_end_test_datetimes();
-        let tempo = TapTempo::get_tempo(0, &start_datetime, &end_datetime);
+        let tempo = TapTempo::tempo(0, &start_datetime, &end_datetime);
         assert_eq!(tempo, None)
     }
 
     #[test]
     fn test_get_tempo_tap_count_one() {
         let (start_datetime, end_datetime) = get_start_and_end_test_datetimes();
-        let tempo = TapTempo::get_tempo(1, &start_datetime, &end_datetime);
+        let tempo = TapTempo::tempo(1, &start_datetime, &end_datetime);
         assert_eq!(tempo, None)
     }
 
     #[test]
     fn test_get_tempo_tap_count_two() {
         let (start_datetime, end_datetime) = get_start_and_end_test_datetimes();
-        let tempo = TapTempo::get_tempo(2, &start_datetime, &end_datetime);
+        let tempo = TapTempo::tempo(2, &start_datetime, &end_datetime);
         assert_eq!(tempo, Some(60.0))
     }
 
